@@ -12,16 +12,16 @@
     </style>
 </head>
 <body>
-    <form action="form">
+    <form action="form/formRes" method="POST">
         <fieldset>
             <legend>Legend</legend>
             <p>    
                 <label for="firstName">Name: </label><br>
-                <input type="text" name="firstName" id="name">
+                <input type="text" name="firstName" value="<%= locals.firstName %>">
             </p>    
             <p>    
                 <label for="lastName">Lastname:</label><br>
-                <input type="text" name="lastName" id="lname">
+                <input type="text" name="lastName" value="<%= locals.lastName %>">
             </p> 
             <input type="submit" value="Submit">
         </fieldset>

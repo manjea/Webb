@@ -1,30 +1,31 @@
 const express = require('express')
 const router = express.Router()
 
-router.post("/", (req, res) => {
-    res.render("form", {firstName : "holy shit", lastName : req.body.lastName})
-})
-
-router.post("/example", (req, res, next) => {
+router.post("/formRes", (req, res, next) => {
     isValid = true
+    if(req.body.firstName == "hejsan"){
+        isValid = false
+    }
     if(isValid){
-        console.log("firstName: " + req.body.firstName)
-        console.log("lastName: " + req.body.lastName)
-        console.log(res.render("form/example", {firstName: "req"}) + "woo it ran")
-        console.log("did it just not run?")
-        next()
+        res.render("form/formRes", {firstName : req.body.firstName, lastName : req.body.lastName})
     }else{
-        console.log("Error")
+        console.log("hej Error")
         res.render("form", {firstName : req.body.firstName, lastName : req.body.lastName})
     }
+    next()
 })
 
 router.get("/example", (req, res) => {
     res.render("form/example")
 })
 
-router.get("/", (req, res, next) => {
-    res.render("form", {firstName: "req"})
+router.get("/formRes", (req, res) => {
+    console.log("hagkjb ")
+    res.render("form/formRes")
+})
+
+router.get("/", (req, res) => {
+    res.render("form")
 })
 
 
